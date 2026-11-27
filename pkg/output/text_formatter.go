@@ -29,9 +29,7 @@ func (f *TextFormatter) Format(r *connectors.TestResult) (string, error) {
 	var b strings.Builder
 
 	status := "SUCCESS"
-	if r.InProgress {
-		status = "IN_PROGRESS"
-	} else if !r.Success {
+	if !r.Success {
 		status = "FAILURE"
 	}
 	fmt.Fprintf(&b, "Test %s: %s (%dms)\n", r.ID, status, r.ElapsedTime)
